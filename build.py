@@ -60,10 +60,21 @@ def log(*a):
     print(*a, flush=True)
 
 
+SECRETS = [s for s in (XTREAM_USER, XTREAM_PASS, UPSTREAM_M3U) if s]
+
+
+def add_secret(s):
+    """Hide a value we discovered at runtime, both in our own messages and in the Actions log."""
+    if s and s not in SECRETS:
+        SECRETS.append(s)
+        if os.environ.get("GITHUB_ACTIONS"):
+            print(f"::add-mask::{s}", flush=True)
+
+
 def secret_free(msg):
     """Strip credentials from anything we print (Actions logs are public on public repos)."""
     msg = str(msg)
-    for s in (XTREAM_USER, XTREAM_PASS, UPSTREAM_M3U):
+    for s in SECRETS:
         if s:
             msg = msg.replace(s, "***")
     return msg
@@ -405,6 +416,8 @@ def main():
         if not creds:
             sys.exit("No Xtream credentials (set XTREAM_HOST/USER/PASS)")
         host, user, pw = creds
+    for s in (user, pw):
+        add_secret(s)
 
     # --- playlist rewrite
     kept, slots = [], []
