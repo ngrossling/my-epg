@@ -6,6 +6,8 @@ Every 30 minutes GitHub Actions:
    New categories and channels he adds show up here automatically.
 2. Drops the **EPGenius** category and every UK, Canada, Australia, New Zealand and Ireland group
    (`DROP_GROUP_RE` in `build.py`), so the playlist is US-only. Every other category is kept as-is.
+   Provider categories listed in `EXTRA_CATEGORIES` (currently "FOR ADULTS") are added as their own
+   group at the very bottom.
 3. Rebuilds **NFL Sunday Ticket**, **College Football**, **NBA League Pass** and **College Basketball**
    game slots itself: it reads what each provider slot is showing right now (Xtream API) and matches
    it to the ESPN schedule. Each slot gets a permanent guide ID (`slot.nfl.<stream id>`), so new games
