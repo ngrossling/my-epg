@@ -68,7 +68,7 @@ LEAGUES = {
     "college football": dict(
         key="ncaaf", label="NCAAF", hours=3.75, emoji="\U0001F3C8", sport="Football",
         espn=[("football/college-football", "&groups=80", None), ("football/college-football", "&groups=81", None)],
-        logo="https://a.espncdn.com/i/teamlogos/ncaa_conf/500/ncaa.png"),
+        logo="https://github.com/K-yzu/Logos/blob/main/TV:US2/NCAA%20College%20Football.png?raw=true"),
     "nba league pass": dict(
         key="nba", label="NBA", espn=[("basketball/nba", "", None)], hours=2.75,
         emoji="\U0001F3C0", sport="Basketball", logo="https://a.espncdn.com/i/teamlogos/leagues/500/nba.png"),
@@ -77,7 +77,7 @@ LEAGUES = {
         espn=[("basketball/mens-college-basketball", "&groups=50", "m"),
               ("basketball/womens-college-basketball", "&groups=50", "w")],
         provider_category="1014", group_title="\U0001F3DF️ College Basketball",
-        logo="https://a.espncdn.com/i/teamlogos/ncaa_conf/500/ncaa.png"),
+        logo="https://a.espncdn.com/i/espn/misc_logos/500/ncaa.png"),
 }
 
 MONTHS = {m: i for i, m in enumerate(
@@ -529,7 +529,11 @@ def main():
                 del e["attrs"][k]
             cid = f"slot.{league['key']}.{m.group(5)}"
             e["attrs"]["tvg-id"] = cid
-            e["attrs"]["tvg-logo"] = league["logo"]
+            # Keep Ganja's channel logo; only per-game pictures (stale once the slot changes) or a
+            # missing logo fall back to the league logo.
+            logo = e["attrs"].get("tvg-logo", "")
+            if not logo or "game-thumbs" in logo:
+                e["attrs"]["tvg-logo"] = league["logo"]
             slots.append(dict(entry=e, league=league, slot=slot, stream_id=m.group(5), cid=cid, backup=backup))
         kept.append(e)
 
