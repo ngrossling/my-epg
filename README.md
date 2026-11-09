@@ -5,11 +5,15 @@ Every 30 minutes GitHub Actions:
 1. Downloads the Ganja Release playlist (your EPGenius Google Drive link) and his EPG (`epg6.xml.gz`).
    New categories and channels he adds show up here automatically.
 2. Drops the **EPGenius** category. Every other category is kept as-is.
-3. Rebuilds **NFL Sunday Ticket**, **College Football** and **NBA League Pass** game slots itself:
-   it reads what each provider slot is showing right now (Xtream API) and matches it to the ESPN
-   schedule. Each slot gets a permanent guide ID (`slot.nfl.<stream id>`), so new games appear after
-   a guide refresh with no playlist reload.
-4. Publishes:
+3. Rebuilds **NFL Sunday Ticket**, **College Football**, **NBA League Pass** and **College Basketball**
+   game slots itself: it reads what each provider slot is showing right now (Xtream API) and matches
+   it to the ESPN schedule. Each slot gets a permanent guide ID (`slot.nfl.<stream id>`), so new games
+   appear after a guide refresh with no playlist reload. College Basketball keeps Ganja's hand-picked
+   games and adds all ~100 provider `NCAAB` slots (men's and women's).
+4. Remembers which game each slot carried (`state.json`), so a finished game stays in the guide with
+   its final score for 24 hours even after the provider clears the slot. Then the slot shows
+   "No Game Today", or the slot's next game once it's within 12 hours.
+5. Publishes:
    * `epg.xml.gz` → this repo's `output` branch (no credentials in it)
    * `playlist.m3u` → a **secret gist** (it contains your Xtream login)
 
@@ -53,6 +57,10 @@ Each run's slot matches are in `status.json` on the `output` branch.
 
 ## Options
 
-* `SPOILERS=1` (add it to the workflow `env`) puts final scores on "Ended" guide entries. Off by default.
-* To add another league later (NHL, MLB, WNBA, college basketball), add an entry to `LEAGUES` in
+* `SPOILERS: "1"` in the workflow (on): live scores while a game is on (as of the last run, so up to
+  30 min old plus however often your player refreshes the EPG), and `Final: Away 24, Home 17` after.
+  Set it to `"0"` for spoiler-free titles.
+* `POST_HOURS` / `PRE_HOURS` in `build.py`: how long a final stays up (24) and how early the
+  upcoming entry starts (12).
+* To add another league later (NHL, MLB, WNBA), add an entry to `LEAGUES` in
   `build.py` with its playlist group name and ESPN path. Until then those groups use Ganja's EPG.
