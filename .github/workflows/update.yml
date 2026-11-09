@@ -1,0 +1,62 @@
+name: Update EPG
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # every 30 min (GitHub may start runs a few minutes late)
+  workflow_dispatch: {}
+
+concurrency:
+  group: epg
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build playlist + EPG
+        env:
+          UPSTREAM_M3U: ${{ secrets.UPSTREAM_M3U }}
+          XTREAM_HOST: ${{ secrets.XTREAM_HOST }}
+          XTREAM_USER: ${{ secrets.XTREAM_USER }}
+          XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
+          EPG_URL: https://raw.githubusercontent.com/${{ github.repository }}/output/epg.xml.gz
+          OUT_DIR: out
+        run: python3 build.py
+
+      # The EPG has no credentials, so it is published on this repo's "output" branch.
+      # Force-pushing a single commit keeps the branch from growing every run.
+      - name: Publish EPG
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir publish && cp out/epg.xml.gz out/status.json publish/ && cd publish
+          git init -q -b output
+          git config user.name "epg-bot"
+          git config user.email "epg-bot@users.noreply.github.com"
+          git add -A && git commit -qm "EPG $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -qf "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" output
+
+      # The playlist contains your Xtream login, so it goes to a SECRET gist, never to this repo.
+      - name: Publish playlist to secret gist
+        env:
+          GIST_ID: ${{ secrets.GIST_ID }}
+          GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
+        run: |
+          git clone -q --depth 1 "https://x-access-token:${GIST_TOKEN}@gist.github.com/${GIST_ID}.git" gist
+          cd gist
+          branch=$(git symbolic-ref --short HEAD)
+          if cmp -s ../out/playlist.m3u playlist.m3u; then echo "playlist unchanged"; exit 0; fi
+          git config user.name "epg-bot"
+          git config user.email "epg-bot@users.noreply.github.com"
+          git checkout -q --orphan fresh
+          git rm -rqf --cached . && find . -maxdepth 1 -type f -delete
+          cp ../out/playlist.m3u playlist.m3u
+          git add playlist.m3u && git commit -qm "playlist $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -qf origin "fresh:${branch}"
+          echo "playlist updated"
