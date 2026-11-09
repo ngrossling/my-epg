@@ -26,6 +26,8 @@ jobs:
           XTREAM_USER: ${{ secrets.XTREAM_USER }}
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
           EPG_URL: https://raw.githubusercontent.com/${{ github.repository }}/output/epg.xml.gz
+          STATE_URL: https://raw.githubusercontent.com/${{ github.repository }}/output/state.json
+          SPOILERS: "1"   # live + final scores in the guide; set to "0" to hide them
           OUT_DIR: out
         run: python3 build.py
 
@@ -35,7 +37,7 @@ jobs:
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mkdir publish && cp out/epg.xml.gz out/status.json publish/ && cd publish
+          mkdir publish && cp out/epg.xml.gz out/status.json out/state.json publish/ && cd publish
           git init -q -b output
           git config user.name "epg-bot"
           git config user.email "epg-bot@users.noreply.github.com"
