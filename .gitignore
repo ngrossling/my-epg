@@ -1,0 +1,7 @@
+out/
+publish/
+gist/
+__pycache__/
+*.m3u
+*.xml
+*.xml.gz
