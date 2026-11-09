@@ -47,6 +47,12 @@ DROP_GROUP_RE = re.compile(
     r"|tv guide (?:uk|canada|australia|ireland)$"
     r"|(?:canada|united kingdom|australia|new zealand|ireland)\b)")
 
+# Extra provider (Xtream) live categories appended as their own group at the very bottom of the
+# playlist: (category name, case-insensitive exact match) -> group-title to use.
+EXTRA_CATEGORIES = {
+    "for adults": "\U0001F51E For Adults",
+}
+
 # How long a finished game keeps showing (with its final score when SPOILERS=1) before the slot
 # falls back to "No Game Today", and how early the "upcoming" entry starts before kickoff.
 POST_HOURS = 24
@@ -554,6 +560,23 @@ def main():
     log(f"  dropped {sum(dropped.values())} entries in {len(dropped)} groups:")
     for g, n in dropped.items():
         log(f"    DROPPED {n:5}  {g}")
+
+    # Extra provider categories go at the very end, in the provider's own channel order.
+    if EXTRA_CATEGORIES:
+        cats = json.loads(fetch(api.replace("get_live_streams", "get_live_categories"), timeout=60))
+        for c in cats:
+            group = EXTRA_CATEGORIES.get((c.get("category_name") or "").strip().lower())
+            if not group:
+                continue
+            streams = sorted((s for s in provider.values() if str(s.get("category_id")) == str(c["category_id"])),
+                             key=lambda s: (s.get("num") or 0))
+            for s in streams:
+                name = (s.get("name") or "").replace(",", " ").strip()
+                kept.append(dict(prefix="#EXTINF:0", name=name, extra=[],
+                                 url=f"{host}/live/{user}/{pw}/{s['stream_id']}.ts",
+                                 attrs={"tvg-id": s.get("epg_channel_id") or "", "tvg-name": name,
+                                        "tvg-logo": s.get("stream_icon") or "", "group-title": group}))
+            log(f"  added {len(streams)} channels from provider category -> {group}")
     log(f"  kept {len(kept)} entries, {len(slots)} sports slots")
 
     # --- slot history from the previous run
