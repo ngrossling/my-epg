@@ -40,6 +40,12 @@ STATE_URL = os.environ.get("STATE_URL", "")  # previous run's state.json (slot h
 
 # Playlist groups to drop entirely (compared after normalising away emoji/punctuation).
 DROP_GROUPS = {"epgenius"}
+# US-only playlist: drop the UK / Canada / Australia / NZ / Ireland sections. Matched against the
+# normalised group-title, e.g. "CA| Kids" -> "ca kids", "🇬🇧 TV Guide (UK)" -> "tv guide uk".
+DROP_GROUP_RE = re.compile(
+    r"^(?:(?:ca|uk|au|nz|ie)\b"
+    r"|tv guide (?:uk|canada|australia|ireland)$"
+    r"|(?:canada|united kingdom|australia|new zealand|ireland)\b)")
 
 # How long a finished game keeps showing (with its final score when SPOILERS=1) before the slot
 # falls back to "No Game Today", and how early the "upcoming" entry starts before kickoff.
@@ -494,11 +500,12 @@ def main():
     names = {sid: s.get("name") or "" for sid, s in provider.items()}
 
     # --- playlist rewrite
-    kept, slots = [], []
+    kept, slots, dropped = [], [], {}
     for e in entries:
         group = e["attrs"].get("group-title", "")
         ng = norm_group(group)
-        if ng in DROP_GROUPS:
+        if ng in DROP_GROUPS or DROP_GROUP_RE.match(ng):
+            dropped[group] = dropped.get(group, 0) + 1
             continue
         m = STREAM_RE.match(e["url"])
         if m:
@@ -544,6 +551,9 @@ def main():
         kept[last + 1:last + 1] = [s["entry"] for s in new]
         slots += new
         log(f"  {league['key']}: added {len(new)} provider slots")
+    log(f"  dropped {sum(dropped.values())} entries in {len(dropped)} groups:")
+    for g, n in dropped.items():
+        log(f"    DROPPED {n:5}  {g}")
     log(f"  kept {len(kept)} entries, {len(slots)} sports slots")
 
     # --- slot history from the previous run
