@@ -3,8 +3,10 @@
 
 * Pulls the upstream playlist and EPG (so new categories/channels flow in automatically).
 * Drops the EPGenius category.
-* Rewrites the NFL / College Football / NBA slot channels with stable tvg-ids and builds
-  their guide data ourselves from the provider's live channel names + ESPN schedules.
+* Rewrites the NFL / College Football / NBA / College Basketball slot channels with stable tvg-ids
+  and builds their guide data ourselves from the provider's live channel names + ESPN schedules.
+* Remembers which game ran on each slot (state.json) so finished games stay in the guide after the
+  provider clears the slot.
 * Prunes the EPG to the channels the playlist actually uses.
 
 Standard library only. Configuration comes from environment variables (see README.md).
@@ -34,22 +36,36 @@ XTREAM_PASS = os.environ.get("XTREAM_PASS", "")
 EPG_URL = os.environ.get("EPG_URL", "")
 OUT_DIR = os.environ.get("OUT_DIR", "out")
 SPOILERS = os.environ.get("SPOILERS", "0") == "1"
+STATE_URL = os.environ.get("STATE_URL", "")  # previous run's state.json (slot history)
 
 # Playlist groups to drop entirely (compared after normalising away emoji/punctuation).
 DROP_GROUPS = {"epgenius"}
 
+# How long a finished game keeps showing (with its final score when SPOILERS=1) before the slot
+# falls back to "No Game Today", and how early the "upcoming" entry starts before kickoff.
+POST_HOURS = 24
+PRE_HOURS = 12
+
 # Slot groups we generate ourselves. Key = normalised group-title.
+#   espn: (ESPN API path, extra query, gender) scoreboards to match against
+#   provider_category: also add every slot channel of this Xtream category (not just Ganja's picks)
 LEAGUES = {
     "nfl sunday ticket": dict(
-        key="nfl", label="NFL", espn="football/nfl", params=[""], hours=3.5,
+        key="nfl", label="NFL", espn=[("football/nfl", "", None)], hours=3.5,
         emoji="\U0001F3C8", sport="Football", logo="https://a.espncdn.com/i/teamlogos/leagues/500/nfl.png"),
     "college football": dict(
-        key="ncaaf", label="NCAAF", espn="football/college-football", params=["&groups=80", "&groups=81"],
-        hours=3.75, emoji="\U0001F3C8", sport="Football",
+        key="ncaaf", label="NCAAF", hours=3.75, emoji="\U0001F3C8", sport="Football",
+        espn=[("football/college-football", "&groups=80", None), ("football/college-football", "&groups=81", None)],
         logo="https://a.espncdn.com/i/teamlogos/ncaa_conf/500/ncaa.png"),
     "nba league pass": dict(
-        key="nba", label="NBA", espn="basketball/nba", params=[""], hours=2.75,
+        key="nba", label="NBA", espn=[("basketball/nba", "", None)], hours=2.75,
         emoji="\U0001F3C0", sport="Basketball", logo="https://a.espncdn.com/i/teamlogos/leagues/500/nba.png"),
+    "college basketball": dict(
+        key="ncaab", label="NCAAB", hours=2.25, emoji="\U0001F3C0", sport="Basketball",
+        espn=[("basketball/mens-college-basketball", "&groups=50", "m"),
+              ("basketball/womens-college-basketball", "&groups=50", "w")],
+        provider_category="1014", group_title="\U0001F3DF️ College Basketball",
+        logo="https://a.espncdn.com/i/teamlogos/ncaa_conf/500/ncaa.png"),
 }
 
 MONTHS = {m: i for i, m in enumerate(
@@ -176,17 +192,18 @@ def upstream_credentials(header_lines):
 def espn_events(league, now):
     days = [(to_et(now) + timedelta(days=d)).strftime("%Y%m%d") for d in (-1, 0, 1, 2)]
     events = {}
-    for day, extra in [(d, x) for d in days for x in league["params"]]:
-        url = (f"https://site.api.espn.com/apis/site/v2/sports/{league['espn']}/scoreboard"
-               f"?dates={day}&limit=300{extra}")
+    for day, (path, extra, gender) in [(d, x) for d in days for x in league["espn"]]:
+        url = (f"https://site.api.espn.com/apis/site/v2/sports/{path}/scoreboard"
+               f"?dates={day}&limit=400{extra}")
         try:
             data = json.loads(fetch(url, timeout=60))
         except Exception as e:
-            log(f"warn: ESPN {league['key']} {day}{extra}: {e}")
+            log(f"warn: ESPN {path} {day}{extra}: {e}")
             continue
         for ev in data.get("events", []):
             parsed = parse_event(ev)
             if parsed:
+                parsed["gender"] = gender
                 events[parsed["id"]] = parsed
     return list(events.values())
 
@@ -225,6 +242,7 @@ def parse_event(ev):
         id=ev["id"],
         start=datetime.fromisoformat(ev["date"].replace("Z", "+00:00")).astimezone(UTC),
         state=(ev.get("status") or {}).get("type", {}).get("state", "pre"),
+        detail=(ev.get("status") or {}).get("type", {}).get("shortDetail", ""),
         home=team(home), away=team(away), neutral=comp.get("neutralSite", False),
         venue=", ".join(filter(None, [venue.get("fullName"), addr.get("city"), addr.get("state")])),
         broadcasts=", ".join(dict.fromkeys(broadcasts)),
@@ -239,8 +257,8 @@ def parse_event(ev):
 NOISE = [
     r"start:.*$", r"\(\s*\d{4}-\d\d-\d\d[^)]*\)", r"-\s*no event streaming\s*-", r"8k exclusive",
     r"\bus:\s*nba pass ppv \d+", r"\((?:us)\)", r"^\s*(?:live|next)\s*\|", r"^\s*us\s*\(\w+\s*\d+\)\s*\|",
-    r":\s*(?:nfl|ncaaf|nba|ncaab)\s+\d+\s*$", r"^\s*(?:nfl|ncaaf|nba)\s*\|?\s*\d*\s*[-:]?",
-    r"^\s*(?:nfl|ncaaf|nba)\s+\d+\s*:", r"^\s*\d+k?\s*-", r"\|",
+    r":\s*(?:nfl|ncaaf|nba|ncaab)\s+\d+\s*$", r"^\s*(?:nfl|ncaaf|nba|ncaab)\s*\|?\s*\d*\s*[-:]?",
+    r"^\s*(?:nfl|ncaaf|nba|ncaab)\s+\d+\s*:", r"^\s*ncaa[mw]\s*:", r"^\s*\d+k?\s*-", r"\|",
 ]
 
 
@@ -253,6 +271,7 @@ def clean_slot_name(raw):
 
 def norm_text(s):
     s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().lower().replace("&", " and ")
+    s = re.sub(r"['`]", "", s)  # "Saint Peter's" == "Saint Peters"
     return " " + re.sub(r"[^a-z0-9]+", " ", s).strip() + " "
 
 
@@ -289,8 +308,13 @@ def alias_spans(text, aliases):
 def match_event(raw, events, now):
     text = norm_text(clean_slot_name(raw))
     when = explicit_date(raw, now)
+    rawn = norm_text(raw)
+    gender = "w" if re.search(r" (?:ncaaw|women s|womens|wbb) ", rawn) else (
+        "m" if re.search(r" (?:ncaam|men s|mens) ", rawn) else None)
     best, best_key = None, None
     for ev in events:
+        if gender and ev.get("gender") and ev["gender"] != gender:
+            continue
         # Both teams must match, on different parts of the name. A match sitting inside a longer match of the
         # other team belongs to that team ("Michigan" inside "Michigan State" is not Michigan).
         hs = alias_spans(text, ev["home"]["aliases"])
@@ -357,11 +381,24 @@ def team_label(t):
     return f"#{t['rank']} {t['short']}" if t.get("rank") and t["rank"] <= 25 else t["short"]
 
 
-def event_programmes(cid, ev, league, win_start, win_end):
+def score_line(ev):
+    return f"{ev['away']['short']} {ev['away']['score']}, {ev['home']['short']} {ev['home']['score']}"
+
+
+def game_end(ev, league, now):
+    """Expected end; a game still in progress past that keeps running in the guide."""
+    end = ev["start"] + timedelta(hours=league["hours"])
+    if ev["state"] == "in" and end < now + timedelta(minutes=30):
+        end = now + timedelta(minutes=45)
+    return end
+
+
+def event_blocks(cid, ev, league, pre_start, end, post_end, now):
+    """Upcoming (pre_start..kickoff), live (kickoff..end) and finished (end..post_end) entries."""
     sep = "vs" if ev["neutral"] else "@"
     short = f"{team_label(ev['away'])} {sep} {team_label(ev['home'])}"
     full = f"{ev['away']['full']} {'vs' if ev['neutral'] else 'at'} {ev['home']['full']}"
-    start, end = ev["start"], ev["start"] + timedelta(hours=league["hours"])
+    start = ev["start"]
     bits = [ev["headline"] or ev["note"]]
     if ev["venue"]:
         bits.append(f"\U0001F4CD {ev['venue']}")
@@ -375,23 +412,53 @@ def event_programmes(cid, ev, league, win_start, win_end):
     desc = " ".join(filter(None, bits))
     cats = ["Sports", league["sport"], league["label"]]
     icon = ev["home"]["logo"] or league["logo"]
-    out = []
-    for a, b in chunks(win_start, min(start, win_end)):
-        out.append(programme(cid, a, b, f"{fmt_et(start)}: {short}", desc, full, cats, icon))
-    if start < win_end:
-        out.append(programme(cid, max(start, win_start), min(end, win_end),
-                             f"{league['emoji']} {short}", desc, full, cats, icon, live=True))
-    final = ""
-    if SPOILERS and ev["state"] == "post":
-        final = f" — Final: {ev['away']['short']} {ev['away']['score']}, {ev['home']['short']} {ev['home']['score']}"
-    for a, b in chunks(max(end, win_start), win_end):
-        out.append(programme(cid, a, b, f"Ended: {short}{final}", desc, full, cats, icon))
+
+    live_title = f"{league['emoji']} {short}"
+    post_title, post_desc = f"Ended: {short}", desc
+    if SPOILERS and ev["state"] == "in":
+        live_title = f"{league['emoji']} LIVE: {score_line(ev)} ({ev['detail']})"
+        post_title = live_title
+    elif SPOILERS and ev["state"] == "post":
+        final = "Final" if ev["detail"] in ("", "Final") else ev["detail"]  # e.g. "Final/OT"
+        post_title = f"{final}: {score_line(ev)}"
+        post_desc = f"{post_title}. {desc}"
+        live_title = f"{league['emoji']} {short} — {post_title}"
+
+    out = [programme(cid, a, b, f"{fmt_et(start)}: {short}", desc, full, cats, icon)
+           for a, b in chunks(pre_start, start)]
+    if start < end:
+        out.append(programme(cid, start, end, live_title, post_desc if ev["state"] == "post" else desc,
+                             full, cats, icon, live=ev["state"] != "post"))
+    out += [programme(cid, a, b, post_title, post_desc, full, cats, icon) for a, b in chunks(end, post_end)]
     return out
 
 
 def filler_programmes(cid, title, desc, league, win_start, win_end):
     return [programme(cid, a, b, title, desc, None, ["Sports"], league["logo"])
             for a, b in chunks(win_start, win_end)]
+
+
+def slot_timeline(cid, evs, league, filler_title, filler_desc, win_start, win_end, now):
+    """Lay out every game known for a slot (current + remembered) and fill the gaps."""
+    evs = sorted(evs, key=lambda e: e["start"])
+    out, cursor = [], win_start
+    for i, ev in enumerate(evs):
+        nxt = evs[i + 1]["start"] if i + 1 < len(evs) else None
+        start = max(ev["start"], cursor)
+        end = min(game_end(ev, league, now), nxt or win_end, win_end)
+        pre_start = min(max(cursor, ev["start"] - timedelta(hours=PRE_HOURS)), start)
+        post_end = end + timedelta(hours=POST_HOURS)
+        if nxt:
+            post_end = min(post_end, max(end, nxt - timedelta(hours=PRE_HOURS)))
+        post_end = min(post_end, win_end)
+        if start >= win_end or post_end <= win_start:
+            continue
+        out += filler_programmes(cid, filler_title, filler_desc, league, cursor, pre_start)
+        ev = dict(ev, start=start)
+        out += event_blocks(cid, ev, league, max(pre_start, win_start), max(end, win_start), post_end, now)
+        cursor = post_end
+    out += filler_programmes(cid, filler_title, filler_desc, league, cursor, win_end)
+    return out
 
 
 # ---------------------------------------------------------------- main build
@@ -419,6 +486,13 @@ def main():
     for s in (user, pw):
         add_secret(s)
 
+    # --- provider channel names (what each slot is showing right now)
+    log("Reading provider channel names ...")
+    api = f"{host}/player_api.php?" + urllib.parse.urlencode(
+        {"username": user, "password": pw, "action": "get_live_streams"})
+    provider = {str(s["stream_id"]): s for s in json.loads(fetch(api, timeout=180))}
+    names = {sid: s.get("name") or "" for sid, s in provider.items()}
+
     # --- playlist rewrite
     kept, slots = [], []
     for e in entries:
@@ -430,7 +504,12 @@ def main():
         if m:
             e["url"] = f"{host}/{m.group(2) or ''}{user}/{pw}/{m.group(5)}{m.group(6) or ''}"
         league = LEAGUES.get(ng)
-        if league and "dsx-slot" in e["attrs"] and m:
+        # Ganja's hand-picked copies from other services (e.g. an ESPN+ feed in College Basketball)
+        # keep his EPG; only the league's own provider slots are rebuilt here.
+        own_slot = league and m and "dsx-slot" in e["attrs"] and (
+            "provider_category" not in league
+            or str(provider.get(m.group(5), {}).get("category_id")) == league["provider_category"])
+        if own_slot:
             slot = e["attrs"]["dsx-slot"]
             backup = "(Backup)" in e["name"]
             for k in [k for k in e["attrs"] if k.startswith("dsx-")]:
@@ -440,13 +519,40 @@ def main():
             e["attrs"]["tvg-logo"] = league["logo"]
             slots.append(dict(entry=e, league=league, slot=slot, stream_id=m.group(5), cid=cid, backup=backup))
         kept.append(e)
+
+    # Leagues with a provider_category get every slot of that category, not just the ones Ganja picked.
+    for ng, league in LEAGUES.items():
+        cat = league.get("provider_category")
+        if not cat:
+            continue
+        have = {s["stream_id"] for s in slots if s["league"] is league}
+        group = next((e["attrs"]["group-title"] for e in kept if norm_group(e["attrs"].get("group-title", "")) == ng),
+                     league["group_title"])
+        new = []
+        for sid, s in provider.items():
+            name = s.get("name") or ""
+            if str(s.get("category_id")) != cat or sid in have or name.lstrip().startswith("#"):
+                continue
+            num = re.search(r"(\d+)\s*:?\s*$", name)
+            slot = f"{int(num.group(1)):02d}" if num else sid
+            cid = f"slot.{league['key']}.{sid}"
+            e = dict(prefix="#EXTINF:0", name="", extra=[], url=f"{host}/live/{user}/{pw}/{sid}.ts",
+                     attrs={"tvg-name": "", "tvg-id": cid, "tvg-logo": league["logo"], "group-title": group})
+            new.append(dict(entry=e, league=league, slot=slot, stream_id=sid, cid=cid, backup=False))
+        new.sort(key=lambda s: (len(s["slot"]), s["slot"]))
+        last = max((i for i, e in enumerate(kept) if e["attrs"].get("group-title") == group), default=len(kept) - 1)
+        kept[last + 1:last + 1] = [s["entry"] for s in new]
+        slots += new
+        log(f"  {league['key']}: added {len(new)} provider slots")
     log(f"  kept {len(kept)} entries, {len(slots)} sports slots")
 
-    # --- provider slot names
-    log("Reading provider channel names ...")
-    api = f"{host}/player_api.php?" + urllib.parse.urlencode(
-        {"username": user, "password": pw, "action": "get_live_streams"})
-    names = {str(s["stream_id"]): s.get("name") or "" for s in json.loads(fetch(api, timeout=180))}
+    # --- slot history from the previous run
+    prev_state = {}
+    if STATE_URL:
+        try:
+            prev_state = json.loads(fetch(STATE_URL, timeout=30)).get("slots", {})
+        except Exception as e:
+            log(f"  no previous state ({e})")
 
     # --- ESPN schedules
     events = {}
@@ -456,34 +562,51 @@ def main():
 
     win_start = et_midnight_utc(now) - timedelta(days=1)
     win_end = et_midnight_utc(now) + timedelta(days=3)
-    gen_channels, gen_programmes, report = [], [], []
+    by_id = {k: {ev["id"]: ev for ev in evs} for k, evs in events.items()}
+    gen_channels, gen_programmes, report, new_state = [], [], [], {}
     for s in slots:
         league, cid, e = s["league"], s["cid"], s["entry"]
         raw = names.get(s["stream_id"], "")
         ev = match_event(raw, events[league["key"]], now) if raw else None
+        # Games this slot carried earlier that have already started stay in its guide, even once the
+        # provider has renamed or cleared the slot. Future games only come from the current name.
+        known = {ev["id"]: ev} if ev else {}
+        for h in prev_state.get(cid, []):
+            old = by_id[league["key"]].get(h["id"])
+            if old and old["start"] <= now and old["start"] > now - timedelta(hours=POST_HOURS + 12):
+                known.setdefault(old["id"], old)
+        new_state[cid] = [{"id": k, "start": v["start"].isoformat()} for k, v in known.items()]
+
         label = f"{league['label']} {s['slot']}"
         suffix = " (Backup)" if s["backup"] else ""
         ch = ET.Element("channel", {"id": cid})
         sub(ch, "display-name", label + suffix, lang="en")
         sub(ch, "icon", src=league["logo"])
         gen_channels.append(ch)
-        if ev:
-            sep = "vs" if ev["neutral"] else "@"
-            e["name"] = f"{label}: {ev['away']['short']} {sep} {ev['home']['short']}{suffix}"
-            gen_programmes += event_programmes(cid, ev, league, win_start, win_end)
-            status = f"{ev['away']['short']} {sep} {ev['home']['short']} ({fmt_et(ev['start'])})"
+
+        kind, cleaned = ("matched", "") if ev else slot_status(raw, now)
+        if kind == "named":
+            filler = (cleaned, raw)
         else:
-            kind, cleaned = slot_status(raw, now)
-            if kind == "named":
-                e["name"] = f"{label}: {cleaned}{suffix}"
-                gen_programmes += filler_programmes(cid, cleaned, raw, league, win_start, win_end)
-                status = f"unmatched -> '{cleaned}'"
-            else:
-                e["name"] = f"{label}: No Game Today{suffix}"
-                gen_programmes += filler_programmes(
-                    cid, "No Game Today", "No game is assigned to this channel right now.", league, win_start, win_end)
-                status = kind
+            filler = ("No Game Today", "No game is assigned to this channel right now.")
+        gen_programmes += slot_timeline(cid, list(known.values()), league, *filler, win_start, win_end, now)
+
+        # Channel name: the current game, else the game that just finished (for a few hours), else the filler.
+        recent = [k for k in known.values() if game_end(k, league, now) > now - timedelta(hours=6)]
+        show = ev or (max(recent, key=lambda k: k["start"]) if recent else None)
+        if show:
+            sep = "vs" if show["neutral"] else "@"
+            e["name"] = f"{label}: {show['away']['short']} {sep} {show['home']['short']}{suffix}"
+        else:
+            e["name"] = f"{label}: {filler[0]}{suffix}"
         e["attrs"]["tvg-name"] = e["name"]
+
+        if ev:
+            status = f"{ev['away']['short']} {'vs' if ev['neutral'] else '@'} {ev['home']['short']} ({fmt_et(ev['start'])})"
+        else:
+            status = f"unmatched -> '{cleaned}'" if kind == "named" else kind
+        if len(known) > (1 if ev else 0):
+            status += f" [+{len(known) - (1 if ev else 0)} remembered]"
         report.append(dict(league=league["key"], slot=s["slot"], provider_name=raw, result=status))
         log(f"  {label:>10}{suffix:<9} | {raw[:60]:<60} | {status}")
 
@@ -547,6 +670,8 @@ def main():
         json.dump(dict(built=now.isoformat(timespec="seconds"), entries=len(kept),
                        playlist_sha1=hashlib.sha1(m3u_text.encode()).hexdigest(), slots=report),
                   f, indent=1, ensure_ascii=False)
+    with open(os.path.join(OUT_DIR, "state.json"), "w", encoding="utf-8") as f:
+        json.dump(dict(built=now.isoformat(timespec="seconds"), slots={k: v for k, v in new_state.items() if v}), f)
 
 
 if __name__ == "__main__":
