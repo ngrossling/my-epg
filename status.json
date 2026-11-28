@@ -1,0 +1,1363 @@
+{
+ "built": "2026-11-28T17:52:51+00:00",
+ "entries": 14713,
+ "playlist_sha1": "837f078e4387db7d6cc924629311cf3b25997def",
+ "slots": [
+  {
+   "league": "nfl",
+   "slot": "4K",
+   "provider_name": "NFL   | 4k - SNF 8:20pm Raiders at Browns",
+   "result": "Raiders @ Browns (Sun 8:20 PM ET)"
+  },
+  {
+   "league": "nfl",
+   "slot": "01",
+   "provider_name": "NFL  | 01 -",
+   "result": "empty"
+  },
+  {
+   "league": "nfl",
+   "slot": "02",
+   "provider_name": "NFL  | 02 -",
+   "result": "empty"
+  },
+  {
+   "league": "nfl",
+   "slot": "03",
+   "provider_name": "NFL  | 03 -",
+   "result": "empty"
+  },
+  {
+   "league": "nfl",
+   "slot": "04",
+   "provider_name": "NFL  | 04 -",
+   "result": "empty"
+  },
+  {
+   "league": "nfl",
+   "slot": "05",
+   "provider_name": "NFL  | 05 -",
+   "result": "empty [+1 remembered]"
+  },
+  {
+   "league": "nfl",
+   "slot": "06",
+   "provider_name": "NFL  | 06 - 1pm Saints at Bengals",
+   "result": "Saints @ Bengals (Sun 1:00 PM ET)"
+  },
+  {
+   "league": "nfl",
+   "slot": "07",
+   "provider_name": "NFL  | 07 - 1pm Giants at Colts",
+   "result": "Giants @ Colts (Sun 1:00 PM ET)"
+  },
+  {
+   "league": "nfl",
+   "slot": "08",
+   "provider_name": "NFL  | 08 - 1pm Jets at Dolphins",
+   "result": "Jets @ Dolphins (Sun 1:00 PM ET)"
+  },
+  {
+   "league": "nfl",
+   "slot": "09",
+   "provider_name": "NFL  | 09 - 1pm Falcons at Vikings",
+   "result": "Falcons @ Vikings (Sun 1:00 PM ET)"
+  },
+  {
+   "league": "nfl",
+   "slot": "10",
+   "provider_name": "NFL  | 10 - 1pm Titans at Jaguars",
+   "result": "Titans @ Jaguars (Sun 1:00 PM ET)"
+  },
+  {
+   "league": "nfl",
+   "slot": "11",
+   "provider_name": "NFL  | 11 - 1pm Ravens at Texans",
+   "result": "Ravens @ Texans (Sun 1:00 PM ET)"
+  },
+  {
+   "league": "nfl",
+   "slot": "12",
+   "provider_name": "NFL  | 12 - 4:05pm Patriots at Chargers",
+   "result": "Patriots @ Chargers (Sun 4:05 PM ET)"
+  },
+  {
+   "league": "nfl",
+   "slot": "13",
+   "provider_name": "NFL  | 13 - 4:25pm Commanders at Cardinals",
+   "result": "Commanders @ Cardinals (Sun 4:25 PM ET)"
+  },
+  {
+   "league": "nfl",
+   "slot": "14",
+   "provider_name": "NFL  | 14 - 4:25pm Seahawks at 49ers",
+   "result": "Seahawks @ 49ers (Sun 4:25 PM ET)"
+  },
+  {
+   "league": "nfl",
+   "slot": "15",
+   "provider_name": "NFL  | 15 - SNF 8:20pm Raiders at Browns",
+   "result": "Raiders @ Browns (Sun 8:20 PM ET)"
+  },
+  {
+   "league": "nfl",
+   "slot": "16",
+   "provider_name": "NFL  | 16 - MNF 8:15pm Panthers at Buccaneers",
+   "result": "Panthers @ Buccaneers (Mon 8:15 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "86",
+   "provider_name": "US: ESPN 2 HD",
+   "result": "unmatched -> 'US: ESPN 2 HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "87",
+   "provider_name": "US: ESPN HD",
+   "result": "unmatched -> 'US: ESPN HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "88",
+   "provider_name": "US: ACC NETWORK HD",
+   "result": "unmatched -> 'US: ACC NETWORK HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "89",
+   "provider_name": "US: ABC 12 (WISN) MILWAUKEE HD",
+   "result": "unmatched -> 'US: ABC 12 (WISN) MILWAUKEE HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "90",
+   "provider_name": "US: FOX 6 (WBRC) BIRMINGHAM HD",
+   "result": "unmatched -> 'US: FOX 6 (WBRC) BIRMINGHAM HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "91",
+   "provider_name": "US: FOX SPORTS 1 HD",
+   "result": "unmatched -> 'US: FOX SPORTS 1 HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "92",
+   "provider_name": "US (ESPN+ 041) | Navy vs. Charlotte Nov 28 12:00PM ET (2026-11-28 12:01:10)",
+   "result": "Navy @ Charlotte (Sat 12:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "93",
+   "provider_name": "US: CBS SPORTS NETWORK HD",
+   "result": "unmatched -> 'US: CBS SPORTS NETWORK HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "94",
+   "provider_name": "US: ESPN USA HD",
+   "result": "unmatched -> 'US: ESPN USA HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "104",
+   "provider_name": "AT&T: BIG TEN NETWORK ᴿᴬᵂ",
+   "result": "unmatched -> 'AT&T: BIG TEN NETWORK ᴿᴬᵂ'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "105",
+   "provider_name": "US: SEC NETWORK HD",
+   "result": "unmatched -> 'US: SEC NETWORK HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "106",
+   "provider_name": "US (ESPN+ 094) | Florida Atlantic vs. East Carolina Nov 28 1:00PM ET (2026-11-28 13:01:25)",
+   "result": "FAU @ East Carolina (Sat 1:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "107",
+   "provider_name": "US (ESPN+ 102) | Kennesaw State vs. Western Kentucky Nov 28 1:00PM ET (2026-11-28 13:02:05)",
+   "result": "Kennesaw St @ Western KY (Sat 1:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "108",
+   "provider_name": "US (ESPN+ 096) | Marshall vs. UL Monroe Nov 28 1:00PM ET (2026-11-28 13:01:35)",
+   "result": "Marshall @ UL Monroe (Sat 1:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "109",
+   "provider_name": "US (ESPN+ 097) | Southern Miss vs. Old Dominion Nov 28 1:00PM ET (2026-11-28 13:01:40)",
+   "result": "Southern Miss @ Old Dominion (Sat 1:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "118",
+   "provider_name": "AT&T: TNT ᴿᴬᵂ",
+   "result": "unmatched -> 'AT&T: TNT ᴿᴬᵂ'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "119",
+   "provider_name": "US (ESPN+ 164) | Kansas State vs. Iowa State Nov 28 2:00PM ET (2026-11-28 14:02:35)",
+   "result": "Kansas St @ Iowa State (Sat 2:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "120",
+   "provider_name": "US (ESPN+ 158) | Army vs. Rice Nov 28 2:00PM ET (2026-11-28 14:02:05)",
+   "result": "Army @ Rice (Sat 2:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "122",
+   "provider_name": "US (ESPN+ 154) | Coastal Carolina vs. James Madison Nov 28 2:00PM ET (2026-11-28 14:01:45)",
+   "result": "Coastal @ James Madison (Sat 2:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "123",
+   "provider_name": "US (ESPN+ 149) | Louisiana vs. Georgia State Nov 28 2:00PM ET (2026-11-28 14:01:20)",
+   "result": "Louisiana @ Georgia St (Sat 2:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "124",
+   "provider_name": "US (ESPN+ 165) | Liberty vs. Missouri State Nov 28 2:00PM ET (2026-11-28 14:02:40)",
+   "result": "Liberty @ Missouri St (Sat 2:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "125",
+   "provider_name": "US (ESPN+ 136) | Sam Houston vs. Florida International Nov 28 2:00PM ET (2026-11-28 14:00:15)",
+   "result": "Sam Houston @ FIU (Sat 2:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "126",
+   "provider_name": "US (ESPN+ 156) | New Mexico State vs. Middle Tennessee Nov 28 2:00PM ET (2026-11-28 14:01:55)",
+   "result": "New Mexico St @ MTSU (Sat 2:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "128",
+   "provider_name": "US: ESPN 2 HD",
+   "result": "unmatched -> 'US: ESPN 2 HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "129",
+   "provider_name": "US: CW 29 HD [KANSAS CITY]",
+   "result": "unmatched -> 'US: CW 29 HD [KANSAS CITY]'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "130",
+   "provider_name": "US (ESPN+ 181) | Troy vs. Arkansas State Nov 28 3:00PM ET (2026-11-28 15:00:25)",
+   "result": "Troy @ Arkansas St (Sat 3:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "132",
+   "provider_name": "US: ABC 12 (WISN) MILWAUKEE HD",
+   "result": "unmatched -> 'US: ABC 12 (WISN) MILWAUKEE HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "133",
+   "provider_name": "US: FOX 6 (WBRC) BIRMINGHAM HD",
+   "result": "unmatched -> 'US: FOX 6 (WBRC) BIRMINGHAM HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "134",
+   "provider_name": "US: ESPN HD",
+   "result": "unmatched -> 'US: ESPN HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "135",
+   "provider_name": "US: ACC NETWORK HD",
+   "result": "unmatched -> 'US: ACC NETWORK HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "136",
+   "provider_name": "US: FOX SPORTS 1 HD",
+   "result": "unmatched -> 'US: FOX SPORTS 1 HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "137",
+   "provider_name": "US: CBS 10 (KOLN) LINCOLN HD",
+   "result": "unmatched -> 'US: CBS 10 (KOLN) LINCOLN HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "138",
+   "provider_name": "US (ESPN+ 206) | Tulane vs. South Florida Nov 28 3:30PM ET (2026-11-28 15:30:05)",
+   "result": "Tulane @ South Florida (Sat 3:30 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "139",
+   "provider_name": "US (ESPN+ 210) | Massachusetts vs. Bowling Green Nov 28 3:30PM ET (2026-11-28 15:30:25)",
+   "result": "UMass @ Bowling Green (Sat 3:30 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "140",
+   "provider_name": "US: CBS SPORTS NETWORK HD",
+   "result": "unmatched -> 'US: CBS SPORTS NETWORK HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "141",
+   "provider_name": "US: ESPN USA HD",
+   "result": "unmatched -> 'US: ESPN USA HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "144",
+   "provider_name": "US: SEC NETWORK HD",
+   "result": "unmatched -> 'US: SEC NETWORK HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "145",
+   "provider_name": "AT&T: BIG TEN NETWORK ᴿᴬᵂ",
+   "result": "unmatched -> 'AT&T: BIG TEN NETWORK ᴿᴬᵂ'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "146",
+   "provider_name": "US: USA NETWORK EAST HD",
+   "result": "unmatched -> 'US: USA NETWORK EAST HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "147",
+   "provider_name": "US: ESPN 2 HD",
+   "result": "unmatched -> 'US: ESPN 2 HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "148",
+   "provider_name": "US: CW 29 HD [KANSAS CITY]",
+   "result": "unmatched -> 'US: CW 29 HD [KANSAS CITY]'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "149",
+   "provider_name": "US: ESPN HD",
+   "result": "unmatched -> 'US: ESPN HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "150",
+   "provider_name": "US: ABC (KOCO)",
+   "result": "unmatched -> 'US: ABC (KOCO)'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "151",
+   "provider_name": "US: ACC NETWORK HD",
+   "result": "unmatched -> 'US: ACC NETWORK HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "152",
+   "provider_name": "US: WILKES BARRE, PA WBRE NBC 28 (A) ᴿᴬᵂ",
+   "result": "unmatched -> 'US: WILKES BARRE, PA WBRE NBC 28 (A) ᴿᴬᵂ'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "154",
+   "provider_name": "US: FOX 6 (WBRC) BIRMINGHAM HD",
+   "result": "unmatched -> 'US: FOX 6 (WBRC) BIRMINGHAM HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "155",
+   "provider_name": "US: CBS SPORTS NETWORK HD",
+   "result": "unmatched -> 'US: CBS SPORTS NETWORK HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "156",
+   "provider_name": "US: ESPN 2 HD",
+   "result": "unmatched -> 'US: ESPN 2 HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "157",
+   "provider_name": "US: USA NETWORK EAST HD",
+   "result": "unmatched -> 'US: USA NETWORK EAST HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "158",
+   "provider_name": "US: CW 29 HD [KANSAS CITY]",
+   "result": "unmatched -> 'US: CW 29 HD [KANSAS CITY]'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "95",
+   "provider_name": "US (ESPN+ 034) | Harvard vs. Monmouth (First Round) Nov 28 12:00PM ET (2026-11-28 12:00:35)",
+   "result": "Harvard @ Monmouth (Sat 12:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "96",
+   "provider_name": "US (ESPN+ 031) | UAlbany vs. Lehigh (First Round) Nov 28 12:00PM ET (2026-11-28 12:00:20)",
+   "result": "UAlbany @ Lehigh (Sat 12:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "110",
+   "provider_name": "US (ESPN+ 101) | Idaho State vs. North Dakota (First Round) Nov 28 1:00PM ET (2026-11-28 13:02:00)",
+   "result": "Idaho St @ North Dakota (Sat 1:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "121",
+   "provider_name": "PRIME: ABC PORTLAND NEWS (KATU) ᴿᴬᵂ",
+   "result": "unmatched -> 'PRIME: ABC PORTLAND NEWS (KATU) ᴿᴬᵂ'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "127",
+   "provider_name": "US (ESPN+ 134) | Dayton vs. Tennessee Tech (First Round) Nov 28 2:00PM ET (2026-11-28 14:00:05)",
+   "result": "Dayton @ Tennessee Tech (Sat 2:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "131",
+   "provider_name": "US (ESPN+ 190) | Western Illinois vs. Weber State (First Round) Nov 28 3:00PM ET (2026-11-28 15:01:10)",
+   "result": "W Illinois @ Weber St (Sat 3:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "142",
+   "provider_name": "US (ESPN+ 233) | Illinois State vs. Austin Peay (First Round) Nov 28 4:00PM ET (2026-11-28 16:00:55)",
+   "result": "Illinois St @ Austin Peay (Sat 4:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "143",
+   "provider_name": "US (ESPN+ 237) | Long Island University vs. Northern Arizona (First Round) Nov 28 4:00PM ET (2026-11-28 16:01:15)",
+   "result": "Long Island @ N Arizona (Sat 4:00 PM ET)"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "153",
+   "provider_name": "US: ESPN USA HD",
+   "result": "unmatched -> 'US: ESPN USA HD'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "114",
+   "provider_name": "US (ESPN+ 090) | Grand Valley State vs. Michigan Tech (Second Round) Nov 28 1:00PM ET (2026-11-28 13:01:05)",
+   "result": "unmatched -> 'US (ESPN+ 090) Grand Valley State vs. Michigan Tech (Second Round) Nov 28 1:00PM ET'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "116",
+   "provider_name": "US (ESPN+ 098) | Newberry vs. UNC Pembroke (Second Round) Nov 28 1:00PM ET (2026-11-28 13:01:45)",
+   "result": "unmatched -> 'US (ESPN+ 098) Newberry vs. UNC Pembroke (Second Round) Nov 28 1:00PM ET'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "97",
+   "provider_name": "US (ESPN+ 033) | Merchant Marine Academy vs. Hampden_Sydney (Second Round) Nov 28 12:00PM ET (2026-11-28 12:00:30)",
+   "result": "unmatched -> 'US (ESPN+ 033) Merchant Marine Academy vs. Hampden_Sydney (Second Round) Nov 28 12:00PM ET'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "98",
+   "provider_name": "US (ESPN+ 039) | Wesleyan (CT) vs. Springfield College (MA) (Second Round) Nov 28 12:00PM ET (2026-11-28 12:01:00)",
+   "result": "unmatched -> 'US (ESPN+ 039) Wesleyan (CT) vs. Springfield College (MA) (Second Round) Nov 28 12:00PM ET'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "99",
+   "provider_name": "US (ESPN+ 038) | Christopher Newport vs. Washington & Jefferson (Second Round) Nov 28 12:00PM ET (2026-11-28 12:00:55)",
+   "result": "unmatched -> 'US (ESPN+ 038) Christopher Newport vs. Washington & Jefferson (Second Round) Nov 28 12:00PM ET'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "100",
+   "provider_name": "US (ESPN+ 029) | Dickinson College vs. Utica (Second Round) Nov 28 12:00PM ET (2026-11-28 12:00:10)",
+   "result": "unmatched -> 'US (ESPN+ 029) Dickinson College vs. Utica (Second Round) Nov 28 12:00PM ET'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "101",
+   "provider_name": "US (ESPN+ 037) | Trinity (CT) vs. Endicott (Second Round) Nov 28 12:00PM ET (2026-11-28 12:00:50)",
+   "result": "unmatched -> 'US (ESPN+ 037) Trinity (CT) vs. Endicott (Second Round) Nov 28 12:00PM ET'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "102",
+   "provider_name": "US (ESPN+ 027) | Hardin_Simmons vs. Calvin (Second Round) Nov 28 12:00PM ET (2026-11-28 12:00:00)",
+   "result": "unmatched -> 'US (ESPN+ 027) Hardin_Simmons vs. Calvin (Second Round) Nov 28 12:00PM ET'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "103",
+   "provider_name": "US (ESPN+ 036) | Susquehanna vs. Baldwin Wallace (Second Round) Nov 28 12:00PM ET (2026-11-28 12:00:45)",
+   "result": "unmatched -> 'US (ESPN+ 036) Susquehanna vs. Baldwin Wallace (Second Round) Nov 28 12:00PM ET'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "111",
+   "provider_name": "US (ESPN+ 103) | DePauw vs. North Central (IL) (Second Round) Nov 28 1:00PM ET (2026-11-28 13:02:10)",
+   "result": "unmatched -> 'US (ESPN+ 103) DePauw vs. North Central (IL) (Second Round) Nov 28 1:00PM ET'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "112",
+   "provider_name": "US (ESPN+ 107) | NCAA Football: DePauw vs. North Central • LINF vs. CUW (DePauw vs. North Central ) (2026-11-28 13:04:05)",
+   "result": "unmatched -> 'US (ESPN+ 107) NCAA Football: DePauw vs. North Central • LINF vs. CUW (DePauw vs. North Central )'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "113",
+   "provider_name": "US (ESPN+ 089) | Hope College vs. Wisconsin_Platteville (Second Round) Nov 28 1:00PM ET (2026-11-28 13:01:00)",
+   "result": "unmatched -> 'US (ESPN+ 089) Hope College vs. Wisconsin_Platteville (Second Round) Nov 28 1:00PM ET'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "115",
+   "provider_name": "US (ESPN+ 109) | NCAA Football: Monmouth IL vs. Wheaton • HNVR vs. STJM (Monmouth IL vs. Wheaton ) (2026-11-28 13:04:15)",
+   "result": "unmatched -> 'US (ESPN+ 109) NCAA Football: Monmouth IL vs. Wheaton • HNVR vs. STJM (Monmouth IL vs. Wheaton )'"
+  },
+  {
+   "league": "ncaaf",
+   "slot": "117",
+   "provider_name": "US (ESPN+ 079) | Claremont Mudd Scripps vs. Wisconsin_Whitewater (Second Round) Nov 28 1:00PM ET (2026-11-28 13:00:10)",
+   "result": "unmatched -> 'US (ESPN+ 079) Claremont Mudd Scripps vs. Wisconsin_Whitewater (Second Round) Nov 28 1:00PM ET'"
+  },
+  {
+   "league": "nba",
+   "slot": "01",
+   "provider_name": "Washington Wizards vs Orlando Magic @ Nov 28 5:00 PM :NBA  01",
+   "result": "Magic @ Wizards (Sat 5:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "01",
+   "provider_name": "NEXT | WAS - WIZARDS VS ORL - MAGIC | Sat 28 Nov 16:00 EST (US) | 8K EXCLUSIVE | US: NBA PASS PPV 1",
+   "result": "Magic @ Wizards (Sat 5:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "02",
+   "provider_name": "NEXT | CHA - HORNETS VS BKN - NETS | Sat 28 Nov 17:00 EST (US) | 8K EXCLUSIVE | US: NBA PASS PPV 2",
+   "result": "Nets @ Hornets (Sat 6:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "03",
+   "provider_name": "Chicago Bulls vs Indiana Pacers @ Nov 28 8:00 PM :NBA  03",
+   "result": "Pacers @ Bulls (Sat 8:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "03",
+   "provider_name": "NEXT | CHI - BULLS VS IND - PACERS | Sat 28 Nov 19:00 EST (US) | 8K EXCLUSIVE | US: NBA PASS PPV 3",
+   "result": "Pacers @ Bulls (Sat 8:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "04",
+   "provider_name": "Milwaukee Bucks vs Oklahoma City Thunder @ Nov 28 8:00 PM :NBA  04",
+   "result": "Thunder @ Bucks (Sat 8:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "04",
+   "provider_name": "NEXT | MIL - BUCKS VS OKC - THUNDER | Sat 28 Nov 19:00 EST (US) | 8K EXCLUSIVE | US: NBA PASS PPV 4",
+   "result": "Thunder @ Bucks (Sat 8:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "05",
+   "provider_name": "Houston Rockets vs Philadelphia 76ers @ Nov 28 8:30 PM :NBA  05",
+   "result": "76ers @ Rockets (Sat 8:30 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "05",
+   "provider_name": "NEXT | HOU - ROCKETS VS PHI - 76ERS | Sat 28 Nov 19:30 EST (US) | 8K EXCLUSIVE | US: NBA PASS PPV 5",
+   "result": "76ers @ Rockets (Sat 8:30 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "06",
+   "provider_name": "- NO EVENT STREAMING - | 8K EXCLUSIVE | US: NBA PASS PPV 6",
+   "result": "empty [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "07",
+   "provider_name": "- NO EVENT STREAMING - | 8K EXCLUSIVE | US: NBA PASS PPV 7",
+   "result": "empty [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "08",
+   "provider_name": "- NO EVENT STREAMING - | 8K EXCLUSIVE | US: NBA PASS PPV 8",
+   "result": "empty [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "09",
+   "provider_name": "- NO EVENT STREAMING - | 8K EXCLUSIVE | US: NBA PASS PPV 9",
+   "result": "empty [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "10",
+   "provider_name": "- NO EVENT STREAMING - | 8K EXCLUSIVE | US: NBA PASS PPV 10",
+   "result": "empty [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "11",
+   "provider_name": "- NO EVENT STREAMING - | 8K EXCLUSIVE | US: NBA PASS PPV 11",
+   "result": "empty [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "12",
+   "provider_name": "- NO EVENT STREAMING - | 8K EXCLUSIVE | US: NBA PASS PPV 12",
+   "result": "empty"
+  },
+  {
+   "league": "nba",
+   "slot": "13",
+   "provider_name": "- NO EVENT STREAMING - | 8K EXCLUSIVE | US: NBA PASS PPV 13",
+   "result": "empty"
+  },
+  {
+   "league": "nba",
+   "slot": "14",
+   "provider_name": "- NO EVENT STREAMING - | 8K EXCLUSIVE | US: NBA PASS PPV 14",
+   "result": "empty"
+  },
+  {
+   "league": "nba",
+   "slot": "15",
+   "provider_name": "- NO EVENT STREAMING - | 8K EXCLUSIVE | US: NBA PASS PPV 15",
+   "result": "empty"
+  },
+  {
+   "league": "nba",
+   "slot": "16",
+   "provider_name": "- NO EVENT STREAMING - | 8K EXCLUSIVE | US: NBA PASS PPV 16",
+   "result": "empty"
+  },
+  {
+   "league": "nba",
+   "slot": "17",
+   "provider_name": "- NO EVENT STREAMING - | 8K EXCLUSIVE | US: NBA PASS PPV 17",
+   "result": "empty"
+  },
+  {
+   "league": "nba",
+   "slot": "18",
+   "provider_name": "- NO EVENT STREAMING - | 8K EXCLUSIVE | US: NBA PASS PPV 18",
+   "result": "empty"
+  },
+  {
+   "league": "nba",
+   "slot": "19",
+   "provider_name": "- NO EVENT STREAMING - | 8K EXCLUSIVE | US: NBA PASS PPV 19",
+   "result": "empty"
+  },
+  {
+   "league": "nba",
+   "slot": "20",
+   "provider_name": "- NO EVENT STREAMING - | 8K EXCLUSIVE | US: NBA PASS PPV 20",
+   "result": "empty"
+  },
+  {
+   "league": "nba",
+   "slot": "02",
+   "provider_name": "NBA 02: Knicks (NYK) x Timberwolves (MIN) start:2025-01-18 00:20:00 stop:2025-01-18 04:20:00",
+   "result": "stale"
+  },
+  {
+   "league": "nba",
+   "slot": "06",
+   "provider_name": ":NBA  06",
+   "result": "empty [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "07",
+   "provider_name": ":NBA  07",
+   "result": "empty [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "08",
+   "provider_name": ":NBA  08",
+   "result": "empty [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "09",
+   "provider_name": ":NBA  09",
+   "result": "empty [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "10",
+   "provider_name": ":NBA  10",
+   "result": "empty [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "11",
+   "provider_name": ":NBA  11",
+   "result": "empty [+1 remembered]"
+  },
+  {
+   "league": "nba",
+   "slot": "12",
+   "provider_name": ":NBA  12",
+   "result": "empty"
+  },
+  {
+   "league": "nba",
+   "slot": "13",
+   "provider_name": "NBA 13 :",
+   "result": "empty"
+  },
+  {
+   "league": "nba",
+   "slot": "14",
+   "provider_name": "NBA 14 :",
+   "result": "empty"
+  },
+  {
+   "league": "nba",
+   "slot": "15",
+   "provider_name": "NBA 15 :",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "01",
+   "provider_name": "NCAAM: Siena vs Seton Hall @ Nov 28 12:00 PM :NCAAB  01",
+   "result": "Siena @ Seton Hall (Sat 12:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "02",
+   "provider_name": "NCAAM: IU Columbus vs Indiana State @ Nov 28 1:00 PM :NCAAB  02",
+   "result": "IU Columbus @ Indiana St (Sat 1:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "ncaab",
+   "slot": "03",
+   "provider_name": "NCAAM: North Carolina Central vs Gardner Webb @ Nov 28 1:00 PM :NCAAB  03",
+   "result": "NC Central @ Gardner-Webb (Sat 1:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "ncaab",
+   "slot": "04",
+   "provider_name": "NCAAM: Robert Morris vs Northern Iowa @ Nov 28 1:00 PM :NCAAB  04",
+   "result": "Robert Morris @ Northern Iowa (Sat 1:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "ncaab",
+   "slot": "05",
+   "provider_name": "NCAAM: Wofford vs Purdue Fort Wayne @ Nov 28 1:00 PM :NCAAB  05",
+   "result": "Wofford @ Purdue FW (Sat 1:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "ncaab",
+   "slot": "06",
+   "provider_name": "NCAAM: East Texas A&M vs Marshall @ Nov 28 2:00 PM :NCAAB  06",
+   "result": "East Texas A&M @ Marshall (Sat 2:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "ncaab",
+   "slot": "07",
+   "provider_name": "NCAAM: Clinton vs Winthrop @ Nov 28 2:00 PM :NCAAB  07",
+   "result": "Clinton @ Winthrop (Sat 2:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "ncaab",
+   "slot": "08",
+   "provider_name": "NCAAM: Le Moyne vs Niagara @ Nov 28 2:00 PM :NCAAB  08",
+   "result": "Le Moyne vs Niagara (Sat 2:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "ncaab",
+   "slot": "09",
+   "provider_name": "NCAAM: Sacramento State vs Presbyterian @ Nov 28 2:00 PM :NCAAB  09",
+   "result": "Sacramento St @ Presbyterian (Sat 2:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "ncaab",
+   "slot": "11",
+   "provider_name": "NCAAM: Troy vs Chattanooga @ Nov 28 2:00 PM :NCAAB  11",
+   "result": "Troy @ Chattanooga (Sat 2:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "ncaab",
+   "slot": "12",
+   "provider_name": "NCAAM: Central Connecticut vs Navy @ Nov 28 2:00 PM :NCAAB  12",
+   "result": "C Connecticut vs Navy (Sat 2:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "ncaab",
+   "slot": "13",
+   "provider_name": "NCAAM: Fordham vs Harvard @ Nov 28 2:00 PM :NCAAB  13",
+   "result": "Fordham @ Harvard (Sat 2:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "ncaab",
+   "slot": "14",
+   "provider_name": "NCAAM: North Florida vs Columbia @ Nov 28 2:00 PM :NCAAB  14",
+   "result": "North Florida @ Columbia (Sat 2:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "ncaab",
+   "slot": "15",
+   "provider_name": "NCAAM: Marist vs George Mason @ Nov 28 2:00 PM :NCAAB  15",
+   "result": "Marist @ George Mason (Sat 2:00 PM ET) [+1 remembered]"
+  },
+  {
+   "league": "ncaab",
+   "slot": "17",
+   "provider_name": "NCAAM: Georgia Southern vs UNC Asheville @ Nov 28 2:00 PM :NCAAB  17",
+   "result": "GA Southern @ UNC Asheville (Sat 2:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "18",
+   "provider_name": "NCAAM: New College of Florida vs Stetson @ Nov 28 2:00 PM :NCAAB  18",
+   "result": "New College @ Stetson (Sat 2:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "19",
+   "provider_name": "NCAAM: The Citadel vs High Point @ Nov 28 2:00 PM :NCAAB  19",
+   "result": "The Citadel @ High Point (Sat 2:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "20",
+   "provider_name": "NCAAM: Ball State vs Southern Indiana @ Nov 28 2:00 PM :NCAAB  20",
+   "result": "Ball State @ S Indiana (Sat 2:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "21",
+   "provider_name": "NCAAM: Kentucky Christian vs UT Martin @ Nov 28 3:00 PM :NCAAB  21",
+   "result": "KCU @ UT Martin (Sat 3:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "22",
+   "provider_name": "NCAAM: Northern Illinois vs Eastern Illinois @ Nov 28 3:00 PM :NCAAB  22",
+   "result": "N Illinois @ E Illinois (Sat 3:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "23",
+   "provider_name": "NCAAM: Western Illinois vs Coastal Carolina @ Nov 28 3:00 PM :NCAAB  23",
+   "result": "W Illinois @ Coastal (Sat 3:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "24",
+   "provider_name": "NCAAM: Denver vs New Mexico State @ Nov 28 3:00 PM :NCAAB  24",
+   "result": "Denver @ New Mexico St (Sat 3:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "25",
+   "provider_name": "NCAAM: Toledo vs Valparaiso @ Nov 28 3:00 PM :NCAAB  25",
+   "result": "Toledo @ Valparaiso (Sat 3:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "26",
+   "provider_name": "NCAAM: Towson vs Buffalo @ Nov 28 3:30 PM :NCAAB  26",
+   "result": "Towson vs Buffalo (Sat 3:30 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "27",
+   "provider_name": "NCAAM: Paul Quinn vs Sam Houston @ Nov 28 3:30 PM :NCAAB  27",
+   "result": "Paul Quinn @ Sam Houston (Sat 3:30 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "29",
+   "provider_name": "NCAAM: San José State vs Utah Valley @ Nov 28 4:00 PM :NCAAB  29",
+   "result": "San José St @ Utah Valley (Sat 4:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "30",
+   "provider_name": "NCAAM: Northern Colorado vs San Diego @ Nov 28 4:00 PM :NCAAB  30",
+   "result": "N Colorado @ San Diego (Sat 4:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "31",
+   "provider_name": "NCAAM: Austin Peay vs Furman @ Nov 28 4:00 PM :NCAAB  31",
+   "result": "Austin Peay @ Furman (Sat 4:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "32",
+   "provider_name": "NCAAM: UMass Lowell vs American University @ Nov 28 4:00 PM :NCAAB  32",
+   "result": "UMass Lowell @ American (Sat 4:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "33",
+   "provider_name": "NCAAM: McNeese vs Louisiana @ Nov 28 4:00 PM :NCAAB  33",
+   "result": "McNeese @ Louisiana (Sat 4:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "34",
+   "provider_name": "NCAAM: Azusa Pacific vs Idaho State @ Nov 28 4:00 PM :NCAAB  34",
+   "result": "Azusa Pacific @ Idaho St (Sat 4:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "35",
+   "provider_name": "NCAAM: Tennessee Tech vs Eastern Kentucky @ Nov 28 4:00 PM :NCAAB  35",
+   "result": "Tennessee Tech @ E Kentucky (Sat 4:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "36",
+   "provider_name": "NCAAM: Maine vs Lafayette @ Nov 28 4:30 PM :NCAAB  36",
+   "result": "Maine @ Lafayette (Sat 4:30 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "37",
+   "provider_name": "NCAAM: Northern Arizona vs Cal State Bakersfield @ Nov 28 5:00 PM :NCAAB  37",
+   "result": "N Arizona @ Bakersfield (Sat 5:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "38",
+   "provider_name": "NCAAM: Weber State vs Cal State Fullerton @ Nov 28 5:00 PM :NCAAB  38",
+   "result": "Weber St @ Fullerton (Sat 5:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "39",
+   "provider_name": "NCAAM: UC Irvine vs Seattle U @ Nov 28 5:00 PM :NCAAB  39",
+   "result": "UC Irvine @ Seattle U (Sat 5:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "40",
+   "provider_name": "NCAAM: Lincoln CA vs UC Riverside @ Nov 28 5:00 PM :NCAAB  40",
+   "result": "Lincoln (CA) @ UC Riverside (Sat 5:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "41",
+   "provider_name": "NCAAM: VMI vs Richmond @ Nov 28 6:00 PM :NCAAB  41",
+   "result": "VMI @ Richmond (Sat 6:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "42",
+   "provider_name": "NCAAM: Bucknell vs Pennsylvania @ Nov 28 6:00 PM :NCAAB  42",
+   "result": "Bucknell @ Penn (Sat 6:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "43",
+   "provider_name": "NCAAM: Trinity College of Jacksonville vs Jacksonville @ Nov 28 6:00 PM :NCAAB  43",
+   "result": "Trinity Co Jax @ Jacksonville (Sat 6:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "44",
+   "provider_name": "NCAAM: Toccoa Falls vs Middle Tennessee @ Nov 28 6:30 PM :NCAAB  44",
+   "result": "Toccoa Falls @ MTSU (Sat 6:30 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "45",
+   "provider_name": "NCAAM: Utah Tech vs Santa Clara @ Nov 28 7:00 PM :NCAAB  45",
+   "result": "Utah Tech @ Santa Clara (Sat 7:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "46",
+   "provider_name": "NCAAM: Bethune Cookman vs San Francisco @ Nov 28 7:00 PM :NCAAB  46",
+   "result": "Bethune @ San Francisco (Sat 7:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "47",
+   "provider_name": "NCAAM: Rider vs Army @ Nov 28 7:00 PM :NCAAB  47",
+   "result": "Rider @ Army (Sat 7:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "48",
+   "provider_name": "NCAAM: St Lawrence vs Cornell @ Nov 28 7:00 PM :NCAAB  48",
+   "result": "St Lawrence @ Cornell (Sat 7:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "49",
+   "provider_name": "NCAAM: Portland State vs Southern Illinois @ Nov 28 7:00 PM :NCAAB  49",
+   "result": "Portland St @ S Illinois (Sat 7:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "10",
+   "provider_name": ":NCAAB  10",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "16",
+   "provider_name": "NCAAM: Southwestern Christian vs Central Arkansas @ Nov 28 2:00 PM :NCAAB  16",
+   "result": "unmatched -> 'Southwestern Christian vs Central Arkansas @ Nov 28 2:00 PM'"
+  },
+  {
+   "league": "ncaab",
+   "slot": "28",
+   "provider_name": "NCAAM: Drexel vs Mount St Marys @ Nov 28 4:00 PM :NCAAB  28",
+   "result": "Drexel @ Mount St Marys (Sat 4:00 PM ET)"
+  },
+  {
+   "league": "ncaab",
+   "slot": "50",
+   "provider_name": ":NCAAB  50",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "51",
+   "provider_name": ":NCAAB  51",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "52",
+   "provider_name": ":NCAAB  52",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "53",
+   "provider_name": ":NCAAB  53",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "54",
+   "provider_name": ":NCAAB  54",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "55",
+   "provider_name": ":NCAAB  55",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "56",
+   "provider_name": ":NCAAB  56",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "57",
+   "provider_name": ":NCAAB  57",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "58",
+   "provider_name": ":NCAAB  58",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "59",
+   "provider_name": ":NCAAB  59",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "60",
+   "provider_name": ":NCAAB  60",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "61",
+   "provider_name": ":NCAAB  61",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "62",
+   "provider_name": ":NCAAB  62",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "63",
+   "provider_name": ":NCAAB  63",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "64",
+   "provider_name": ":NCAAB  64",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "65",
+   "provider_name": ":NCAAB  65",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "66",
+   "provider_name": ":NCAAB  66",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "67",
+   "provider_name": ":NCAAB  67",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "68",
+   "provider_name": ":NCAAB  68",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "69",
+   "provider_name": ":NCAAB  69",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "70",
+   "provider_name": ":NCAAB  70",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "71",
+   "provider_name": ":NCAAB  71",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "72",
+   "provider_name": ":NCAAB  72",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "73",
+   "provider_name": ":NCAAB  73",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "74",
+   "provider_name": ":NCAAB  74",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "75",
+   "provider_name": ":NCAAB  75",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "76",
+   "provider_name": ":NCAAB  76",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "77",
+   "provider_name": ":NCAAB  77",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "78",
+   "provider_name": ":NCAAB  78",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "79",
+   "provider_name": ":NCAAB  79",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "80",
+   "provider_name": ":NCAAB  80",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "81",
+   "provider_name": ":NCAAB  81",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "82",
+   "provider_name": ":NCAAB  82",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "83",
+   "provider_name": ":NCAAB  83",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "84",
+   "provider_name": ":NCAAB  84",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "85",
+   "provider_name": ":NCAAB  85",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "86",
+   "provider_name": ":NCAAB  86",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "87",
+   "provider_name": ":NCAAB  87",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "88",
+   "provider_name": ":NCAAB  88",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "89",
+   "provider_name": ":NCAAB  89",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "90",
+   "provider_name": ":NCAAB  90",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "91",
+   "provider_name": ":NCAAB  91",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "92",
+   "provider_name": ":NCAAB  92",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "93",
+   "provider_name": ":NCAAB  93",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "94",
+   "provider_name": ":NCAAB  94",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "95",
+   "provider_name": ":NCAAB  95",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "96",
+   "provider_name": ":NCAAB  96",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "97",
+   "provider_name": ":NCAAB  97",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "98",
+   "provider_name": ":NCAAB  98",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "99",
+   "provider_name": ":NCAAB  99",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "100",
+   "provider_name": ":NCAAB  100",
+   "result": "empty"
+  },
+  {
+   "league": "ncaab",
+   "slot": "101",
+   "provider_name": ":NCAAB  101",
+   "result": "empty"
+  }
+ ]
+}
